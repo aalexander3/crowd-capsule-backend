@@ -1,5 +1,6 @@
 class Upload < ApplicationRecord
   belongs_to :user
+  belongs_to :category
 
   def self.save_to_cloud(file)
     secret = {
@@ -7,7 +8,6 @@ class Upload < ApplicationRecord
       api_secret: ENV['API_SECRET'],
       cloud_name: ENV['CLOUD_NAME']
     }
-
     Cloudinary::Uploader.upload(file, secret)
   end
 
