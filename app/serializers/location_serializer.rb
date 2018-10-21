@@ -1,5 +1,6 @@
 class LocationSerializer < ActiveModel::Serializer
   attributes :id, :coordinates, :count, :name
+  has_many :uploads
 
   def coordinates
     arr = []
