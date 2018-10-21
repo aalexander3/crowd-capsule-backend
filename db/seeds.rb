@@ -1,3 +1,7 @@
+Category.destroy_all
+User.destroy_all
+Upload.destroy_all
+
 space = Category.create(name: "Space")
 
 admin = User.create(username: "Admin")
