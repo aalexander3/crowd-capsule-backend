@@ -10,7 +10,7 @@ class UploadsController < ApplicationController
   def create
     response = Upload.save_it(@file)
     user = User.find_by(username: "Admin")
-    upload = Upload.new(path: response['url'], user: user, caption: @caption, category: Category.first, location: Location.random)
+    upload = Upload.new(path: response['url'], user: user, caption: @caption, category: Category.all.sample, location: Location.random)
     if upload.save
       render json: upload
     else
