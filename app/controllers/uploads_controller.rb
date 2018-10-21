@@ -1,5 +1,11 @@
 class UploadsController < ApplicationController
   before_action :get_file, only: [:create]
+  before_action :get_upload, only: [:update]
+
+  def index
+    uploads = Upload.all
+    render json: uploads
+  end
 
   def create
     response = Upload.save_it(@file)
@@ -12,11 +18,19 @@ class UploadsController < ApplicationController
     end
   end
 
+  def update
+    @upload.update(upvotes: (@upload.upvotes + 1))
+  end
+
   private
 
   def get_file
     @file = params[:file]
     @caption = params[:caption]
+  end
+
+  def get_upload
+    @upload = Upload.find(params[:id])
   end
 
 end
