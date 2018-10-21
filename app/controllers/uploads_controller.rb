@@ -4,6 +4,7 @@ class UploadsController < ApplicationController
 
   def index
     uploads = Upload.all
+    # what's up models
     render json: uploads
   end
 
