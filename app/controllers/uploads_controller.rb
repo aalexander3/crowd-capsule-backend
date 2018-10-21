@@ -1,6 +1,11 @@
 class UploadsController < ApplicationController
   before_action :get_file, only: [:create]
 
+  def index
+    uploads = Upload.all
+    render json: uploads
+  end
+
   def create
     response = Upload.save_it(@file)
     user = User.find_by(username: "Admin")
