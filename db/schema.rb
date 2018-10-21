@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2018_10_20_203701) do
     t.datetime "updated_at", null: false
   end
 
-
   create_table "locations", force: :cascade do |t|
     t.string "name"
     t.float "long"
@@ -29,7 +28,7 @@ ActiveRecord::Schema.define(version: 2018_10_20_203701) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-  
+
   create_table "uploads", force: :cascade do |t|
     t.string "path"
     t.string "caption"
