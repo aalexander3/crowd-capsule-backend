@@ -1,6 +1,8 @@
 class Upload < ApplicationRecord
   belongs_to :user
   belongs_to :category
+  belongs_to :location
+  
   validates :caption, length: { maximum: 140 }
 
   @@secret = {
