@@ -21,21 +21,6 @@ ActiveRecord::Schema.define(version: 2018_10_20_203701) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "scores", force: :cascade do |t|
-    t.string "name"
-    t.integer "value"
-    t.integer "song_id"
-  end
-
-  create_table "songs", force: :cascade do |t|
-    t.string "name"
-    t.string "artist"
-    t.string "filePath"
-    t.integer "duration"
-    t.string "imagePath"
-    t.string "previewPath"
-  end
-
   create_table "uploads", force: :cascade do |t|
     t.string "path"
     t.string "caption"
