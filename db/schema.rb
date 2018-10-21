@@ -21,15 +21,24 @@ ActiveRecord::Schema.define(version: 2018_10_20_203701) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "locations", force: :cascade do |t|
+    t.float "long"
+    t.float "lat"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "uploads", force: :cascade do |t|
     t.string "path"
     t.string "caption"
     t.integer "upvotes", default: 0
     t.bigint "user_id"
+    t.bigint "location_id"
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_uploads_on_category_id"
+    t.index ["location_id"], name: "index_uploads_on_location_id"
     t.index ["user_id"], name: "index_uploads_on_user_id"
   end
 
@@ -40,5 +49,6 @@ ActiveRecord::Schema.define(version: 2018_10_20_203701) do
   end
 
   add_foreign_key "uploads", "categories"
+  add_foreign_key "uploads", "locations"
   add_foreign_key "uploads", "users"
 end
