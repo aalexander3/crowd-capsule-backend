@@ -38,7 +38,8 @@ ActiveRecord::Schema.define(version: 2018_10_20_203701) do
 
   create_table "uploads", force: :cascade do |t|
     t.string "path"
-    t.integer "upvotes"
+    t.string "caption"
+    t.integer "upvotes", default: 0
     t.bigint "user_id"
     t.bigint "category_id"
     t.datetime "created_at", null: false
