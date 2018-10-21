@@ -10,32 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_20_221330) do
+ActiveRecord::Schema.define(version: 2018_10_20_203701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "scores", force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.integer "value"
-    t.integer "song_id"
-  end
-
-  create_table "songs", force: :cascade do |t|
-    t.string "name"
-    t.string "artist"
-    t.string "filePath"
-    t.integer "duration"
-    t.string "imagePath"
-    t.string "previewPath"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "uploads", force: :cascade do |t|
     t.string "path"
+    t.string "caption"
+    t.integer "upvotes", default: 0
     t.bigint "user_id"
+    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "category"
+    t.index ["category_id"], name: "index_uploads_on_category_id"
     t.index ["user_id"], name: "index_uploads_on_user_id"
   end
 
@@ -45,5 +39,6 @@ ActiveRecord::Schema.define(version: 2018_10_20_221330) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "uploads", "categories"
   add_foreign_key "uploads", "users"
 end
