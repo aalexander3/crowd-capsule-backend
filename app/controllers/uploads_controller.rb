@@ -21,6 +21,7 @@ class UploadsController < ApplicationController
 
   def update
     @upload.update(upvotes: (@upload.upvotes + 1))
+    render json: @upload
   end
 
   private
